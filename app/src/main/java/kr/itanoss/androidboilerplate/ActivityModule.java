@@ -1,0 +1,29 @@
+package kr.itanoss.androidboilerplate;
+
+import android.app.Activity;
+import dagger.Module;
+import dagger.Provides;
+import kr.itanoss.androidboilerplate.service.Toaster;
+
+/**
+ * A module to wrap the Activity state and expose it to the graph.
+ */
+@Module
+public class ActivityModule {
+  private final Activity activity;
+
+  public ActivityModule(Activity activity) {
+    this.activity = activity;
+  }
+
+  /**
+   * Expose the activity to dependents in the graph.
+   */
+  @Provides @PerActivity Activity activity() {
+    return activity;
+  }
+
+//  @Provides @PerActivity Toaster toaster(Toaster toaster) {
+//    return toaster;
+//  }
+}
