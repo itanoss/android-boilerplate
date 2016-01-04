@@ -11,6 +11,9 @@ import android.view.MenuItem;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import kr.itanoss.androidboilerplate.ActivityModule;
 import kr.itanoss.androidboilerplate.DemoApplication;
 import kr.itanoss.androidboilerplate.R;
@@ -22,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     Toaster toaster;
     private MainActivityComponent component;
 
+    @Bind(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.fab) FloatingActionButton fab;
+
     public MainActivityComponent getComponent() {
         return component;
     }
@@ -30,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // DI with dagger
         component = DaggerMainActivityComponent.builder()
                 .applicationComponent(((DemoApplication) getApplication()).getComponent())
                 .activityModule(new ActivityModule(this))
@@ -37,17 +44,18 @@ public class MainActivity extends AppCompatActivity {
         component.inject(this);
 
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        // DI with butterknife
+        ButterKnife.bind(this);
+
+
+        setSupportActionBar(toolbar);
+    }
+
+    @OnClick(R.id.fab)
+    public void fabOnClick(View view) {
+        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
     }
 
     @Override

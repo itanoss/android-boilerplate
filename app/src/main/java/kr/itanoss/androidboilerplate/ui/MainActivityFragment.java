@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import javax.inject.Inject;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import kr.itanoss.androidboilerplate.R;
 import kr.itanoss.androidboilerplate.service.Toaster;
 
@@ -16,12 +18,15 @@ import kr.itanoss.androidboilerplate.service.Toaster;
  */
 public class MainActivityFragment extends Fragment {
 
-    @Inject Toaster toaster;
+    @Inject
+    Toaster toaster;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((MainActivity)getActivity()).getComponent().inject(this);
+
+        // DI with dagger
+        ((MainActivity) getActivity()).getComponent().inject(this);
     }
 
     @Override
@@ -29,13 +34,22 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        view.findViewById(R.id.hello_world).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toaster.show("This is message of dependency in fragment.");
-            }
-        });
+        // DI with butterknife
+        ButterKnife.bind(this, view);
 
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        // BINDING RESET: Fragments have a different view lifecycle than activities. When binding a fragment in onCreateView, set the views to null in onDestroyView. Butter Knife has an unbind method to do this automatically.
+        ButterKnife.unbind(this);
+    }
+
+    @OnClick(R.id.hello_world)
+    public void clicked() {
+        toaster.show("This is message of dependency in fragment.");
     }
 }
