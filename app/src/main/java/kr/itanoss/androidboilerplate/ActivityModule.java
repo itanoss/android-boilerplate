@@ -22,8 +22,4 @@ public class ActivityModule {
   @Provides @PerActivity Activity activity() {
     return activity;
   }
-
-//  @Provides @PerActivity Toaster toaster(Toaster toaster) {
-//    return toaster;
-//  }
 }
