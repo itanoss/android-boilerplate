@@ -1,5 +1,7 @@
 # android-boilerplate
 
+[![Build Status](https://travis-ci.org/itanoss/android-boilerplate.svg)](https://travis-ci.org/itanoss/android-boilerplate)
+
 A template codebase to start android app development.
 
 ## Dependencies
