@@ -7,5 +7,5 @@ import org.robolectric.annotation.Config;
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class,
         sdk = 21)   // Alternative, currently API Level 23 is not supported
-public class DemoApplicationTestCase {
+public abstract class DemoApplicationTestCase {
 }
