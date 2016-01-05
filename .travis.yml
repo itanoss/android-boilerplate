@@ -12,5 +12,8 @@ android:
 
     - sys-img-armeabi-v7a-android-23
 
+script:
+  - ./gradlew build
+
 after_failure:
-  if [ -e app/build/outputs/lint-results.xml ]; then cat app/build/outputs/lint-results.xml; else echo 'Not existent'; fi
+  - if [ -e app/build/outputs/lint-results.xml ]; then cat app/build/outputs/lint-results.xml; else echo 'Not existent'; fi
