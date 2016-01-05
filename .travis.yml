@@ -10,5 +10,7 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
 
+    - sys-img-armeabi-v7a-android-23
+
 after_failure:
   if [ -e app/build/outputs/lint-results.xml ]; then cat app/build/outputs/lint-results.xml; else echo 'Not existent'; fi
