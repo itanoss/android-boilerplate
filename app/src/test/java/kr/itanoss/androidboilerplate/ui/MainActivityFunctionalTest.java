@@ -1,16 +1,23 @@
 package kr.itanoss.androidboilerplate.ui;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
+import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.annotation.Config;
 import org.robolectric.fakes.RoboMenuItem;
 import org.robolectric.shadows.ShadowToast;
 
-import kr.itanoss.androidboilerplate.DemoApplicationTestCase;
+import kr.itanoss.androidboilerplate.BuildConfig;
 import kr.itanoss.androidboilerplate.R;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MainActivityTest extends DemoApplicationTestCase {
+
+@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class,
+        sdk = 21)   // Alternative, currently API Level 23 is not supported
+public class MainActivityFunctionalTest {
 
     @Test
     public void clickingSettingsMenu_toastMessageshouldBeShown() throws Exception {

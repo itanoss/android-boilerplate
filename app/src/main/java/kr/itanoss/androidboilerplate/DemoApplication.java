@@ -10,6 +10,10 @@ public class DemoApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        initializeComponent();
+    }
+
+    protected void initializeComponent() {
         component = DaggerApplicationComponent.builder()
                 .demoApplicationModule(new DemoApplicationModule(this))
                 .build();
