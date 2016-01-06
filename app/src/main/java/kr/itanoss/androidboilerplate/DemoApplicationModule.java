@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import kr.itanoss.androidboilerplate.service.Toaster;
 
 @Module
 public class DemoApplicationModule {
@@ -22,5 +23,10 @@ public class DemoApplicationModule {
     @Singleton
     Application application() {
         return application;
+    }
+
+    @Provides @Singleton
+    Toaster toaster() {
+        return new Toaster(application);
     }
 }

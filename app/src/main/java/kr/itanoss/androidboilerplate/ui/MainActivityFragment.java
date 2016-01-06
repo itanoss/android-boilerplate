@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import kr.itanoss.androidboilerplate.DemoApplication;
 import kr.itanoss.androidboilerplate.R;
 import kr.itanoss.androidboilerplate.service.Toaster;
 
@@ -26,7 +27,7 @@ public class MainActivityFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         // DI with dagger
-        ((MainActivity) getActivity()).getComponent().inject(this);
+        ((DemoApplication)getActivity().getApplication()).getComponent().inject(this);
     }
 
     @Override

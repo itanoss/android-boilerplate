@@ -5,16 +5,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import kr.itanoss.androidboilerplate.ActivityModule;
 import kr.itanoss.androidboilerplate.DemoApplication;
 import kr.itanoss.androidboilerplate.R;
 import kr.itanoss.androidboilerplate.service.Toaster;
@@ -23,25 +22,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Inject
     Toaster toaster;
-    private MainActivityComponent component;
 
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.fab) FloatingActionButton fab;
-
-    public MainActivityComponent getComponent() {
-        return component;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // DI with dagger
-        component = DaggerMainActivityComponent.builder()
-                .applicationComponent(((DemoApplication) getApplication()).getComponent())
-                .activityModule(new ActivityModule(this))
-                .build();
-        component.inject(this);
+        ((DemoApplication)getApplication()).getComponent().inject(this);
 
         setContentView(R.layout.activity_main);
 

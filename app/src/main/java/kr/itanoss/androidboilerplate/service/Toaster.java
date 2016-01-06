@@ -1,24 +1,21 @@
 package kr.itanoss.androidboilerplate.service;
 
-import android.app.Activity;
+import android.app.Application;
 import android.widget.Toast;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
-import kr.itanoss.androidboilerplate.PerActivity;
-
-@PerActivity
+@Singleton
 public class Toaster {
-
-    private final Activity activity;
+    private final Application application;
 
     @Inject
-    public Toaster(Activity activity) {
-        this.activity = activity;
+    public Toaster(Application application) {
+        this.application = application;
     }
 
-
     public void show(String message) {
-        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(application, message, Toast.LENGTH_SHORT).show();
     }
 }
