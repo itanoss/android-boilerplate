@@ -1,6 +1,7 @@
 # android-boilerplate
 
 [![Build Status](https://travis-ci.org/itanoss/android-boilerplate.svg)](https://travis-ci.org/itanoss/android-boilerplate)
+[![codecov.io](https://codecov.io/github/itanoss/android-boilerplate/coverage.svg?branch=master)](https://codecov.io/github/itanoss/android-boilerplate?branch=master)
 
 A template codebase to start android app development.
 
