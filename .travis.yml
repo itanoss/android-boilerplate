@@ -13,7 +13,7 @@ android:
     - sys-img-armeabi-v7a-android-23
 
 before_install:
-  - pip install codecov
+  - sudo pip install codecov
 
 script:
   - ./gradlew build
