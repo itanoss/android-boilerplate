@@ -1,8 +1,10 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
+        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.1'
         // the latest version of the android-apt plugin
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
     }
@@ -10,6 +12,7 @@ buildscript {
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'jacoco-android'
 
 android {
     compileSdkVersion 23
@@ -68,3 +71,8 @@ dependencies {
 //packagingOptions {
 //    exclude 'META-INF/services/javax.annotation.processing.Processor'
 //}
+
+jacocoAndroidUnitTestReport {
+    excludes += [
+                 '**/*ViewBinder*.class']
+}
