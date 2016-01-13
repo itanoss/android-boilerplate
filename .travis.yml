@@ -16,7 +16,7 @@ before_install:
   - sudo pip install codecov
 
 script:
-  - ./gradlew build
+  - ./gradlew build jacocoTestDebugUnitTestReport
 
 after_failure:
   - if [ -e app/build/outputs/lint-results.xml ]; then cat app/build/outputs/lint-results.xml; else echo 'Not existent'; fe
