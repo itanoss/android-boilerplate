@@ -6,7 +6,6 @@ import android.widget.Toast;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-@Singleton
 public class Toaster {
     private final Application application;
 

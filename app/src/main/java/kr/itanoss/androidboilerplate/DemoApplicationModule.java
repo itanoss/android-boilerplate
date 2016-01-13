@@ -25,8 +25,4 @@ public class DemoApplicationModule {
         return application;
     }
 
-    @Provides @Singleton
-    Toaster toaster() {
-        return new Toaster(application);
-    }
 }
