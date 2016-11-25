@@ -13,6 +13,7 @@ android:
     - sys-img-armeabi-v7a-android-23
 
 script:
+  - jdk_switcher use oraclejdk8
   - ./gradlew build jacocoTestDebugUnitTestReport
   - ./gradlew connectedCheck
 
