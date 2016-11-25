@@ -12,13 +12,11 @@ android:
 
     - sys-img-armeabi-v7a-android-23
 
-before_install:
-  - sudo pip install codecov
-
 script:
   - ./gradlew build jacocoTestDebugUnitTestReport
+  - ./gradlew connectedCheck
 
 after_failure:
   - if [ -e app/build/outputs/lint-results.xml ]; then cat app/build/outputs/lint-results.xml; else echo 'Not existent'; fe
 after_success:
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)
