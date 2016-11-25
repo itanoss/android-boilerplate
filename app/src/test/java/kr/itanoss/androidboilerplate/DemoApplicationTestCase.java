@@ -3,10 +3,10 @@ package kr.itanoss.androidboilerplate;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
-import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-@RunWith(RobolectricGradleTestRunner.class)
+@RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class,
         application = DemoTestApplication.class,
         sdk = 21)   // Alternative, currently API Level 23 is not supported

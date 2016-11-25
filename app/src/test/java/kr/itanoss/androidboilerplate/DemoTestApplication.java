@@ -1,7 +1,5 @@
 package kr.itanoss.androidboilerplate;
 
-import android.app.Application;
-
 public class DemoTestApplication extends DemoApplication {
 
     private TestApplicationComponent component;
