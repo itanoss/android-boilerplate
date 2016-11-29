@@ -14,7 +14,7 @@ android:
 
 script:
   - jdk_switcher use oraclejdk8
-  - ./gradlew build testDebugUnitTest jacocoTestDebugUnitTestReport
+  - ./gradlew jacocoTestReportDebug
 
 after_failure:
   - if [ -e app/build/outputs/lint-results.xml ]; then cat app/build/outputs/lint-results.xml; else echo 'Not existent'; fe
