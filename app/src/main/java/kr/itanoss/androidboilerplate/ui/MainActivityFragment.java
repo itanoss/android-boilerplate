@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import kr.itanoss.androidboilerplate.DemoApplication;
 import kr.itanoss.androidboilerplate.R;
 import kr.itanoss.androidboilerplate.service.Toaster;
@@ -21,6 +22,7 @@ public class MainActivityFragment extends Fragment {
 
     @Inject
     Toaster toaster;
+    private Unbinder unbinder;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class MainActivityFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         // DI with butterknife
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
         return view;
     }
@@ -46,7 +48,7 @@ public class MainActivityFragment extends Fragment {
         super.onDestroyView();
 
         // BINDING RESET: Fragments have a different view lifecycle than activities. When binding a fragment in onCreateView, set the views to null in onDestroyView. Butter Knife has an unbind method to do this automatically.
-        ButterKnife.unbind(this);
+        unbinder.unbind();
     }
 
     @OnClick(R.id.hello_world)

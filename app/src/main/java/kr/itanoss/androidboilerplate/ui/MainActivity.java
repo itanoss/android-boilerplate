@@ -11,7 +11,7 @@ import android.view.View;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import kr.itanoss.androidboilerplate.DemoApplication;
@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     @Inject
     Toaster toaster;
 
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.fab) FloatingActionButton fab;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.fab) FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
