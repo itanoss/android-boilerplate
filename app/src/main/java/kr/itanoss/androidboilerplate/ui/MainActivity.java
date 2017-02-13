@@ -1,7 +1,6 @@
 package kr.itanoss.androidboilerplate.ui;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -24,28 +23,28 @@ public class MainActivity extends AppCompatActivity {
     Toaster toaster;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.fab) FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // DI with dagger
-        ((DemoApplication)getApplication()).getComponent().inject(this);
-
         setContentView(R.layout.activity_main);
 
-        // DI with butterknife
         ButterKnife.bind(this);
 
-
         setSupportActionBar(toolbar);
+
+        ((DemoApplication)getApplication()).getComponent().inject(this);
     }
 
     @OnClick(R.id.fab)
     public void fabOnClick(View view) {
         Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
+    }
+
+    @OnClick(R.id.hello_world)
+    public void clicked() {
+        toaster.show("This is message of dependency in fragment.");
     }
 
     @Override

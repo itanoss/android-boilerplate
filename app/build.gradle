@@ -25,8 +25,7 @@ android {
 }
 
 ext {
-    androidSupportVersion = '25.+'
-//    assertJAndroidVersion = '1.1.1'
+    androidSupportVersion = '25.1.1'
 }
 
 repositories {
@@ -51,10 +50,9 @@ dependencies {
     testCompile 'org.robolectric:robolectric:3.+'
     testCompile 'org.khronos:opengl-api:gl1.1-android-2.1_r1'       // Fix robolectric bug
     testCompile 'org.mockito:mockito-core:1.+'
-    testCompile "org.assertj:assertj-core:1.+"
-//    testCompile "com.squareup.assertj:assertj-android:$assertJAndroidVersion"
-//    testCompile "com.squareup.assertj:assertj-android-appcompat-v7:$assertJAndroidVersion"
-//    testCompile "com.squareup.assertj:assertj-android-design:$assertJAndroidVersion"
+    testCompile('com.squareup.assertj:assertj-android:1.+', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 }
 
 //lintOptions {
