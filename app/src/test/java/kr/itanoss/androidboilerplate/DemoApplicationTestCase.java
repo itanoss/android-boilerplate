@@ -8,8 +8,7 @@ import org.robolectric.annotation.Config;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class,
-        application = DemoTestApplication.class,
-        sdk = 21)   // Alternative, currently API Level 23 is not supported
+        application = DemoTestApplication.class)
 public abstract class DemoApplicationTestCase {
     @Before
     public void _init() throws Exception {

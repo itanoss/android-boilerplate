@@ -13,6 +13,8 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import kr.itanoss.androidboilerplate.DemoApplication;
 import kr.itanoss.androidboilerplate.R;
 import kr.itanoss.androidboilerplate.service.Toaster;
@@ -44,7 +46,11 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.hello_world)
     public void clicked() {
-        toaster.show("This is message of dependency in fragment.");
+        Observable.just(1, 2, 3, 4, 5)
+                .reduce((a, b) -> a+b)
+                .map(x -> x.toString())
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(toaster::show);
     }
 
     @Override
